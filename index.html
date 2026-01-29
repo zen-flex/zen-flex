@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Zen Flex – Fitness Tools</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <h1>Zen Flex</h1>
+    <p>Smart Fitness • Balanced Body • Strong Mind</p>
+  </header>
+
+  <nav>
+    <button onclick="showSection('calorie')">Calorie Calculator</button>
+    <button onclick="showSection('meal')">Meal Calculator</button>
+    <button onclick="showSection('diet')">Diet Chart</button>
+    <!--
+<button onclick="showSection('workout')">Workout Plan</button>
+-->
+
+    <button onclick="showSection('info')">Pros & Cons</button>
+  </nav>
+
+  <section id="calorie" class="box">
+    <h2>Maintenance Calorie Calculator</h2>
+
+    <input type="number" id="age" placeholder="Age">
+    <input type="number" id="weight" placeholder="Weight (kg)">
+    <input type="number" id="height" placeholder="Height (cm)">
+
+    <select id="gender">
+      <option value="male">Male</option>
+      <option value="female">Female</option>
+    </select>
+
+    <select id="activity">
+      <option value="1.2">Sedentary</option>
+      <option value="1.375">Light Activity</option>
+      <option value="1.55">Moderate Activity</option>
+      <option value="1.725">Heavy Activity</option>
+   </select>
+
+    <button onclick="calculateCalories()">Calculate</button>
+    <p id="result"></p>
+<p id="bmrResult"></p>
+<div>
+  <button onclick="setGoal('loss')">Fat Loss</button>
+  <button onclick="setGoal('maintain')">Maintain</button>
+  <button onclick="setGoal('gain')">Muscle Gain</button>
+</div>
+
+<p id="goalResult"></p>
+
+<div>
+  <button onclick="setLanguage('en')">English</button>
+  <button onclick="setLanguage('hi')">Hindi</button>
+  <button onclick="setLanguage('bn')">Bengali</button>
+</div>
+
+<p id="explanation"></p>
+
+
+
+
+    
+  </section>
+
+  <section id="meal" class="box hidden">
+    <h2>Meal Calories & Macros</h2>
+    <label>Food:</label>
+<select id="food">
+  <!-- Carbs -->
+  <option value="rice">Rice (White)</option>
+  <option value="brown_rice">Brown Rice</option>
+  <option value="whole_wheat_bread">Whole Wheat Bread</option>
+  <option value="white_bread">White Bread</option>
+  <option value="oats">Oats</option>
+  <option value="pasta">Pasta</option>
+  <option value="potato">Potato</option>
+  <option value="sweet_potato">Sweet Potato</option>
+  <option value="corn">Corn</option>
+  <option value="quinoa">Quinoa</option>
+
+  <!-- Protein -->
+  <option value="chicken_breast">Chicken Breast</option>
+  <option value="chicken_thigh">Chicken Thigh</option>
+  <option value="egg">Egg (Whole)</option>
+  <option value="egg_white">Egg White</option>
+  <option value="fish">Fish</option>
+  <option value="tuna">Tuna</option>
+  <option value="salmon">Salmon</option>
+  <option value="beef">Beef</option>
+  <option value="mutton">Mutton / Lamb</option>
+  <option value="paneer">Paneer</option>
+
+  <!-- Dairy -->
+  <option value="milk">Milk (Whole)</option>
+  <option value="low_fat_milk">Low Fat Milk</option>
+  <option value="yogurt">Yogurt / Curd</option>
+  <option value="greek_yogurt">Greek Yogurt</option>
+  <option value="cheese">Cheese</option>
+  <option value="butter">Butter</option>
+  <option value="whey">Whey Protein</option>
+
+  <!-- Plant Protein -->
+  <option value="lentils">Lentils (Dal)</option>
+  <option value="chickpeas">Chickpeas</option>
+  <option value="rajma">Kidney Beans</option>
+  <option value="black_beans">Black Beans</option>
+  <option value="tofu">Soybeans / Tofu</option>
+
+  <!-- Fats -->
+  <option value="peanuts">Peanuts</option>
+  <option value="almonds">Almonds</option>
+  <option value="cashews">Cashews</option>
+  <option value="walnuts">Walnuts</option>
+  <option value="peanut_butter">Peanut Butter</option>
+  <option value="olive_oil">Olive Oil</option>
+
+  <!-- Fruits -->
+  <option value="banana">Banana</option>
+  <option value="apple">Apple</option>
+  <option value="orange">Orange</option>
+  <option value="mango">Mango</option>
+  <option value="papaya">Papaya</option>
+  <option value="grapes">Grapes</option>
+  <option value="dates">Dates</option>
+
+  <!-- Vegetables -->
+  <option value="spinach">Spinach</option>
+  <option value="broccoli">Broccoli</option>
+  <option value="carrot">Carrot</option>
+  <option value="tomato">Tomato</option>
+  <option value="onion">Onion</option>
+</select>
+
+<label>Quantity (grams):</label>
+<input type="number" id="grams" placeholder="e.g. 100">
+
+<button onclick="addMeal()">Add to Meal</button>
+<button onclick="resetMeal()">Reset Meal</button>
+
+<p id="mealResult"></p>
+<p id="mealTotal"></p>
+<p id="dailyStatus"></p>
+<p id="mealMacroResult"></p>
+<p id="dailyStatus"></p>
+
+ </section>
+
+  
+<section id="diet" class="box hidden">
+  <h2>Diet Chart</h2>
+
+  <div>
+  <button onclick="showDiet('loss')">Fat Loss</button>
+  <button onclick="showDiet('maintain')">Maintain</button>
+  <button onclick="showDiet('gain')">Muscle Gain</button>
+</div>
+
+
+  <div id="dietResult">
+
+
+  <h3>Morning (Empty Stomach)</h3>
+  <ul>
+    <li>1 glass warm water</li>
+    <li>Optional: lemon (½)</li>
+  </ul>
+
+  <h3>Breakfast</h3>
+  <ul>
+    <li>2 whole eggs (boiled or omelette)</li>
+    <li>2 slices whole wheat bread</li>
+    <li>1 glass milk (200 ml)</li>
+    <li>1 apple or banana</li>
+  </ul>
+
+  <h3>Lunch</h3>
+  <ul>
+    <li>2 slices bread OR 1 cup cooked rice</li>
+    <li>150 g chicken / fish OR 3 eggs</li>
+    <li>Mixed vegetables (1 cup)</li>
+    <li>1 cup yogurt / curd</li>
+  </ul>
+
+  <h3>Evening Snack</h3>
+  <ul>
+    <li>1 fruit (apple / orange)</li>
+    <li>Handful nuts (10–12 peanuts or almonds)</li>
+    <li>Tea or coffee (no sugar preferred)</li>
+  </ul>
+
+  <h3>Dinner</h3>
+  <ul>
+    <li>150 g protein (chicken / fish / eggs)</li>
+    <li>Vegetables (1–2 cups)</li>
+    <li>1 slice bread OR small rice portion</li>
+  </ul>
+
+  <h3>Before Bed (Optional)</h3>
+  <ul>
+    <li>1 glass warm milk</li>
+  </ul>
+
+  <p><b>Note:</b> Quantity can be increased for muscle gain and reduced for fat loss.</p>
+</section>
+
+</section>
+
+  <section id="workout" class="box hidden">
+  <h2>Workout Plan</h2>
+
+  <button onclick="selectWorkout('loss')">Fat Loss</button>
+  <button onclick="selectWorkout('maintain')">Maintain</button>
+  <button onclick="selectWorkout('gain')">Muscle Gain</button>
+
+  <div id="workoutResult"></div>
+  <div id="dayWorkout"></div>
+
+  </section>
+
+  <section id="info" class="box hidden">
+  <h2>Pros & Cons</h2>
+
+  <div>
+    <button onclick="showInfo('loss')">Fat Loss</button>
+    <button onclick="showInfo('maintain')">Maintain</button>
+    <button onclick="showInfo('gain')">Muscle Gain</button>
+  </div>
+
+  <div id="infoResult">
+    <h3>Choose a goal to see Pros & Cons</h3>
+  </div>
+</section>
+
+
+  <script src="script.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,90 @@
+/* ===============================
+   BASE RESET
+================================ */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+  background: #f4f6f8;
+  color: #222;
+}
+
+/* ===============================
+   HEADER
+================================ */
+header {
+  background: #111;
+  color: white;
+  padding: 15px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* ===============================
+   NAVIGATION
+================================ */
+nav {
+  margin-bottom: 15px;
+}
+
+nav button {
+  margin-right: 8px;
+  padding: 8px 12px;
+  cursor: pointer;
+  background: #ff9800;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+nav button:hover {
+  background: #e68900;
+}
+
+/* ===============================
+   CONTENT BOX
+================================ */
+.box {
+  margin-top: 20px;
+  padding: 15px;
+  background: #ffffff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+/* ===============================
+   FORMS
+================================ */
+input,
+select {
+  width: 100%;
+  padding: 8px;
+  margin-top: 6px;
+  margin-bottom: 10px;
+}
+
+/* ===============================
+   BUTTONS
+================================ */
+button {
+  background: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 12px;
+}
+
+button:hover {
+  background: #43a047;
+}
+
+/* ===============================
+   HIDDEN SECTIONS (IMPORTANT)
+================================ */
+.hidden {
+  display: none;
+}
